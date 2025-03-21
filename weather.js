@@ -82,10 +82,10 @@ function updateUI(data) {
     const currentContainer = document.getElementById('current');
     currentContainer.innerHTML = `
                 <h2>Current Weather for ${data.city || "Unknown"}</h2>
-                <div class="temperature">${Math.round(data.current.temperature_2m)}${data.current_units.temperature_2m}</div>
+                <div class="temperature">${Math.round(data.current.temperature_2m * 9/5 + 32)}°F</div>
                 <div class="weather-icon">${weatherIcons[data.current.weather_code] || '❓'}</div>
                 <div class="conditions">
-                    Feels like: ${Math.round(data.current.apparent_temperature)}${data.current_units.apparent_temperature}<br>
+                    Feels like: ${Math.round(data.current.apparent_temperature * 9/5 + 32)}°F<br>
                     Humidity: ${data.current.relative_humidity_2m}${data.current_units.relative_humidity_2m}<br>
                     Precipitation: ${data.current.precipitation}${data.current_units.precipitation}
                 </div>
@@ -98,8 +98,8 @@ function updateUI(data) {
                     <div class="date">${formatDate(date)}</div>
                     <div class="weather-icon">${weatherIcons[data.daily.weather_code[index]] || '❓'}</div>
                     <div class="conditions">
-                        High: ${Math.round(data.daily.temperature_2m_max[index])}${data.daily_units.temperature_2m_max}<br>
-                        Low: ${Math.round(data.daily.temperature_2m_min[index])}${data.daily_units.temperature_2m_min}<br>
+                        High: ${Math.round(data.daily.temperature_2m_max[index] * 9/5 + 32)}°F<br>
+                        Low: ${Math.round(data.daily.temperature_2m_min[index] * 9/5 + 32)}°F<br>
                         Rain: ${data.daily.precipitation_sum[index]}${data.daily_units.precipitation_sum}
                     </div>
                 </div>
